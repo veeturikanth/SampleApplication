@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
 		stage('Fetch') {
-			git changelog: false, credentialsId: 'bb17272d-b8bd-403c-975a-58567ebf100c', url: 'https://github.com/veeturikanth/SampleApplication.git'
-			mvnHome = tool "Maven 3.5.2"
+            steps {
+				git changelog: false, credentialsId: 'bb17272d-b8bd-403c-975a-58567ebf100c', url: 'https://github.com/veeturikanth/SampleApplication.git'
+				mvnHome = tool "Maven 3.5.2"
+            }
 		}
         stage('Test') {
             steps {
