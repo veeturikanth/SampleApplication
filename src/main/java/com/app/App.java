@@ -11,7 +11,7 @@ public class App {
 	}
 	
     public static void main(String[] args) {
-    	final String str = "Hello hai Jenkins!";
+    	final String str = "Helloooo Jenkins!";
     	
         App appObject = new App();
         System.out.println("The reverse string of \"" + str + "\" is \"" + appObject.reverseString(str) + "\"");
