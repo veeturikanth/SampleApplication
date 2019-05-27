@@ -4,18 +4,19 @@ pipeline {
 		stage('Fetch') {
             steps {
 				git changelog: false, credentialsId: 'bb17272d-b8bd-403c-975a-58567ebf100c', url: 'https://github.com/veeturikanth/SampleApplication.git'
+				mvnHome = tool "Maven 3.5.2"
             }
 		}
         stage('Build') {
             steps {
-				withMaven(maven : 'Maven 3.5.2') {
+				withEnv(["MVN_HOME=$mvnHome"]) {
 					bat 'mvn clean compile'
 				}
             }
         }
         stage('Test') {
             steps {
-				withMaven(maven : 'Maven 3.5.2') {
+				withEnv(["MVN_HOME=$mvnHome"]) {
 					bat 'mvn test'
 				}
 			}				
